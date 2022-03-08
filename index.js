@@ -11,16 +11,16 @@ const app= express();
 //Define Routes in express
 // app.method(path,callback)
 
+//res.write() ---> accepts a string
+//res.end() ---> ends the response
+//res.writeHead() ---> accepts a status code and a json object
 
 app.get("/welcome",(req,res)=>{
-    // // res.writeHead(statusCode,headersObject)
-    //    res.writeHead(200,{
-    //           "Content-Type":"text/plain"
-    //    })
-    //    //writeHead is a mehod of response object which is used to
-    //    // send the status code and the headers
-    //    res.end("Welcome to Dominos");
-    res.send("Welcome to Dominos");
+    // res.status(statusCode).send()
+
+    res.status(200).send("Welcome to dominos");
+    //res.send()----> Can Accept Any Type o param
+    // res.writeHead() +    res.end()
     // res.write() + res.end()
 })
 
@@ -33,11 +33,12 @@ app.get("/contact",(req,res)=>{
     //     address:"Bangalore",
     //     contact:"9876543210"
     // }))
-    res.send({
+    res.status(404).send({
         name:"Dominos",
         address:"Bangalore",
         contact:"9876543210"
-    })
+    }
+    )
 })
 
 app.get("*",(req,res)=>{
